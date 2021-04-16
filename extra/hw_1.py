@@ -35,15 +35,15 @@ class Rectangle(Figure):
     name = "rectangle"
     angles = 4
 
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
+    def __init__(self, side_a, side_b):
+        self.side_a = side_a
+        self.side_b = side_b
 
     def get_rectangle_area(self):
-        return self.width * self.height
+        return self.side_a * self.side_b
 
     def get_rectangle_perimeter(self):
-        return 2 * (self.width + self.height)
+        return 2 * (self.side_a + self.side_b)
 
 
 class Square(Rectangle):
