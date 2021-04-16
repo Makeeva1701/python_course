@@ -3,37 +3,37 @@ from extra.hw_1 import Rectangle, Triangle, Square, Circle
 
 class TestRectangle:
     def test_get_rectangle_area(self):
-        rectangle = Rectangle(width=4, height=6)
+        rectangle = Rectangle(side_a=4, side_b=6)
         assert rectangle.get_rectangle_area() == 24
 
     def test_get_rectangle_perimeter(self):
-        rectangle = Rectangle(width=4, height=6)
+        rectangle = Rectangle(side_a=4, side_b=6)
         assert rectangle.get_rectangle_perimeter() == 20
 
     def test_get_name_figure_rectangle(self):
-        rectangle = Rectangle(width=4, height=6)
+        rectangle = Rectangle(side_a=4, side_b=6)
         assert rectangle.get_name_figure() == "rectangle"
 
     def test_get_angles_rectangle(self):
-        rectangle = Rectangle(width=4, height=6)
+        rectangle = Rectangle(side_a=4, side_b=6)
         assert rectangle.get_angles_figure() == 4
 
 
 class TestSquare:
     def test_get_square_area(self):
-        square = Square(width=4, height=6)
-        assert square.get_rectangle_area() == 24
+        square = Square(side_a=4, side_b=4)
+        assert square.get_rectangle_area() == 16
 
     def test_get_square_perimeter(self):
-        square = Square(width=4, height=6)
-        assert square.get_rectangle_perimeter() == 20
+        square = Square(side_a=4, side_b=4)
+        assert square.get_rectangle_perimeter() == 16
 
     def test_get_name_figure_square(self):
-        square = Square(width=4, height=6)
+        square = Square(side_a=4, side_b=4)
         assert square.get_name_figure() == "square"
 
     def test_get_rectangle_angles_square(self):
-        square = Square(width=4, height=6)
+        square = Square(side_a=4, side_b=4)
         assert square.get_angles_figure() == 4
 
 
