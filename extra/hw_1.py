@@ -2,9 +2,9 @@ import math
 
 
 class Figure:
-    def __init__(self, name, angles):
-        self.name = name,
-        self.angles = angles
+    name = None
+    angles = None
+    area = None
 
     def get_name_figure(self):
         return self.name
