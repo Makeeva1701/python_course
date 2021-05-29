@@ -4,3 +4,4 @@ user_admin = {
 }
 
 product_id = 49
+catalog_id = 20
