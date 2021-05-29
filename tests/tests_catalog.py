@@ -1,40 +1,38 @@
+from selenium.webdriver.common.by import By
+
+from page_objects.catalog_page import CatalogPage
+
+
 def test_catalog_page_find_button_last_view(browser, url):
-    url = url + "/index.php?route=product/category&path=20"
-    browser.get(url)
-    browser.find_element_by_css_selector("#list-view").click()
+    CatalogPage(browser).open_catalog_page(url)
+    browser.find_element(By.CSS_SELECTOR, "#list-view").click()
 
 
 def test_catalog_page_find_button_grid_view(browser, url):
-    url = url + "/index.php?route=product/category&path=20"
-    browser.get(url)
-    browser.find_element_by_css_selector("#grid-view").click()
+    CatalogPage(browser).open_catalog_page(url)
+    browser.find_element(By.CSS_SELECTOR, "#grid-view").click()
 
 
 def test_catalog_page_find_button_input_sort(browser, url):
-    url = url + "/index.php?route=product/category&path=20"
-    browser.get(url)
-    browser.find_element_by_css_selector("#input-sort").click()
+    CatalogPage(browser).open_catalog_page(url)
+    browser.find_element(By.CSS_SELECTOR, "#input-sort").click()
 
 
 def test_catalog_page_find_button_input_limit(browser, url):
-    url = url + "/index.php?route=product/category&path=20"
-    browser.get(url)
-    browser.find_element_by_css_selector("#input-limit").click()
+    CatalogPage(browser).open_catalog_page(url)
+    browser.find_element(By.CSS_SELECTOR, "#input-limit").click()
 
 
 def test_catalog_page_find_button_icon_heart(browser, url):
-    url = url + "/index.php?route=product/category&path=20"
-    browser.get(url)
-    browser.find_elements_by_css_selector("i.fa-heart")[1].click()
+    CatalogPage(browser).open_catalog_page(url)
+    browser.find_elements(By.CSS_SELECTOR, "i.fa-heart")[1].click()
 
 
 def test_catalog_page_find_button_pc_in_listing(browser, url):
-    url = url + "/index.php?route=product/category&path=20"
-    browser.get(url)
-    browser.find_elements_by_css_selector('a[href*="20_26"]')[2].click()
+    CatalogPage(browser).open_catalog_page(url)
+    browser.find_elements(By.CSS_SELECTOR, 'a[href*="20_26"]')[2].click()
 
 
 def test_catalog_page_find_button_mac_in_listing(browser, url):
-    url = url + "/index.php?route=product/category&path=20"
-    browser.get(url)
-    browser.find_elements_by_css_selector('a[href*="20_27"]')[2].click()
+    CatalogPage(browser).open_catalog_page(url)
+    browser.find_elements(By.CSS_SELECTOR, 'a[href*="20_27"]')[2].click()

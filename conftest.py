@@ -11,10 +11,10 @@ def pytest_addoption(parser):
     parser.addoption("--maximized", action="store_true", help="Maximize browser windows")
     parser.addoption("--headless", action="store_true", help="Run headless")
     parser.addoption("--browser", action="store", choices=["chrome", "firefox", "opera"], default="chrome")
-    parser.addoption("--url", default="http://demo-opencart.ru/")
+    parser.addoption("--url", default="http://localhost/")
 
 
-@pytest.fixture
+@pytest.fixture(scope="function")
 def url(request):
     return request.config.getoption("url")
 

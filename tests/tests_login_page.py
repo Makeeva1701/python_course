@@ -1,31 +1,28 @@
-import time
+from selenium.webdriver.common.by import By
+
+from page_objects.login_page import LoginPage
 
 
 def test_login_page_find_email_entry_field(browser, url):
-    url = url + "/index.php?route=account/login"
-    browser.get(url)
-    browser.find_element_by_css_selector("#input-email").click()
+    LoginPage(browser).open_login_page(url)
+    browser.find_element(By.CSS_SELECTOR, "#input-email").click()
 
 
 def test_login_page_find_password_entry_field(browser, url):
-    url = url + "/index.php?route=account/login"
-    browser.get(url)
-    browser.find_element_by_css_selector("#input-password").click()
+    LoginPage(browser).open_login_page(url)
+    browser.find_element(By.CSS_SELECTOR, "#input-password").click()
 
 
 def test_login_page_find_forgotten_href(browser, url):
-    url = url + "/index.php?route=account/login"
-    browser.get(url)
-    browser.find_element_by_css_selector('a[href*="route=account/forgotten"]').click()
+    LoginPage(browser).open_login_page(url)
+    browser.find_element(By.CSS_SELECTOR, 'a[href*="route=account/forgotten"]').click()
 
 
 def test_login_page_find_button_login(browser, url):
-    url = url + "/index.php?route=account/login"
-    browser.get(url)
-    browser.find_element_by_css_selector('input[type=submit]').click()
+    LoginPage(browser).open_login_page(url)
+    browser.find_element(By.CSS_SELECTOR, 'input[type=submit]').click()
 
 
 def test_login_page_find_continue_href(browser, url):
-    url = url + "/index.php?route=account/login"
-    browser.get(url)
-    browser.find_element_by_css_selector('a.btn-primary').click()
+    LoginPage(browser).open_login_page(url)
+    browser.find_element(By.CSS_SELECTOR, 'a.btn-primary').click()
