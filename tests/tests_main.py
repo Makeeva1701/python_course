@@ -24,4 +24,3 @@ def test_main_page_find_foto_in_product_card(browser, url):
 def test_main_page_find_basket(browser, url):
     browser.get(url)
     browser.find_element(By.CSS_SELECTOR, '#cart-total').click()
-

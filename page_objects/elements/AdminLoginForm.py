@@ -15,4 +15,3 @@ class AdminLoginForm:
         self.browser.find_element(self.INPUT_USERNAME[0], self.INPUT_USERNAME[1]).send_keys(test_data.user_admin['username'])
         self.browser.find_element(self.INPUT_PASSWORD[0], self.INPUT_PASSWORD[1]).send_keys(test_data.user_admin['password'])
         self.browser.find_element(self.BUTTON_SUBMIT[0], self.BUTTON_SUBMIT[1]).click()
-
