@@ -1,16 +1,11 @@
 import pytest
-import os
 
 from selenium import webdriver
-from selenium.webdriver.opera.options import Options as OperaOptions
-
-DRIVERS = os.path.expanduser("/Users/anastasia/Downloads/drivers")
 
 
 def pytest_addoption(parser):
-    parser.addoption("--maximized", action="store_true", help="Maximize browser windows")
-    parser.addoption("--headless", action="store_true", help="Run headless")
-    parser.addoption("--browser", action="store", choices=["chrome", "firefox", "opera"], default="chrome")
+    parser.addoption("--browser", action="store", default="chrome", choices=["chrome", "firefox", "opera"])
+    parser.addoption("--executor", action="store", default="192.168.0.80")
     parser.addoption("--url", default="http://localhost/")
 
 
@@ -19,41 +14,28 @@ def url(request):
     return request.config.getoption("url")
 
 
-@pytest.fixture(scope="session")
-def browser(request):
+@pytest.fixture
+def firefox(request):
+    wd = webdriver.Firefox()
+    request.addfinalizer(wd.quit)
+    return wd
+
+
+@pytest.fixture
+def chrome(request):
+    wd = webdriver.Chrome()
+    request.addfinalizer(wd.quit)
+    return wd
+
+
+@pytest.fixture
+def driver(request):
     browser = request.config.getoption("--browser")
-    headless = request.config.getoption("--headless")
-    maximized = request.config.getoption("--maximized")
-
-    if browser == "chrome":
-        options = webdriver.ChromeOptions()
-        options.headless = headless
-
-        driver = webdriver.Chrome(
-            options=options,
-            executable_path=f"{DRIVERS}/chromedriver"
-        )
-    elif browser == "firefox":
-        options = webdriver.FirefoxOptions()
-        options.headless = headless
-
-        driver = webdriver.Firefox(
-            options=options,
-            executable_path=f"{DRIVERS}/geckodriver"
-        )
-    elif browser == "opera":
-        options = OperaOptions()
-
-        driver = webdriver.Opera(
-            options=options,
-            executable_path=f"{DRIVERS}/operadriver"
-        )
-    else:
-        raise ValueError("Driver not supported: {}".format(browser))
-
-    request.addfinalizer(driver.quit)
-
-    if maximized:
-        driver.maximize_window()
-
-    return driver
+    executor = request.config.getoption("--executor")
+    wd = webdriver.Remote(
+        command_executor=f"http://{executor}:4444/",
+        desired_capabilities={"browserName": browser}
+    )
+    wd.maximize_window()
+    request.addfinalizer(wd.quit)
+    return wd
