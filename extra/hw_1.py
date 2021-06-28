@@ -4,7 +4,7 @@ import math
 class Figure:
     name = None
     angles = None
-    area = None
+    area = 0
 
     def get_name_figure(self):
         return self.name
@@ -30,6 +30,12 @@ class Triangle(Figure):
     def get_triangle_perimeter(self):
         return self.side_a + self.side_b + self.side_c
 
+    def add_area(self, figure):
+        if isinstance(figure, Figure):
+            return figure.area + self.area
+        else:
+            return TypeError
+
 
 class Rectangle(Figure):
     name = "rectangle"
@@ -44,6 +50,12 @@ class Rectangle(Figure):
 
     def get_rectangle_perimeter(self):
         return 2 * (self.side_a + self.side_b)
+
+    def add_area(self, figure):
+        if isinstance(figure, Figure):
+            return figure.area + self.area
+        else:
+            return TypeError
 
 
 class Square(Rectangle):
@@ -62,3 +74,9 @@ class Circle(Figure):
 
     def get_circle_perimeter(self):
         return 2 * math.pi * self.radius
+
+    def add_area(self, figure):
+        if isinstance(figure, Figure):
+            return figure.area + self.area
+        else:
+            return TypeError
